@@ -1,5 +1,5 @@
-# Ansible Playbook: Install Nginx on Ubuntu Local Machine
-This Ansible playbook installs and configures Nginx on an Ubuntu local machine.
+# Ansible Playbook: Install Nginx on Ubuntu Local & Remote Machine
+This Ansible playbook installs and configures Nginx on an Ubuntu local & Remote Machine.
 
 # Project Structure
 
@@ -37,6 +37,28 @@ cd my-playbook
 ```bash
 ansible-playbook site.yml
 ```
+
+# Using Key-Based Authentication with Ansible:
+
+Prerequisites:
+ 1. A remote server that you want to manage with Ansible
+ 2. A user account on the remote server with sudo privileges
+
+Step 1: Generate an SSH key pair
+
+```bash
+ssh-keygen
+```
+By default, this will create a 2048-bit RSA key pair in the ~/.ssh directory.
+
+Step 2: Copy the public key to the remote server using the ssh-copy-id command:
+
+```bash
+ssh-copy-id remote_user_name@remote_server_ip_address
+```
+Step 3: Modify your Ansible inventory file
+In your Ansible inventory file, modify the entry for the remote server to use the SSH key. Replace remote_user_name with the username of the remote user, and /path/to/private/key with the path to the private key file on your Ansible control node.
+
 
 # Testing
 1. This role includes a tests directory with a sample inventory and test playbook. You can run the tests using the following command:
