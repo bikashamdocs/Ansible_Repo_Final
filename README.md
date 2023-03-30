@@ -3,10 +3,13 @@ This Ansible playbook installs and configures Nginx on an Ubuntu local & Remote 
 
 # Project Structure
 
-1. ansible.cfg: is the configuration file for Ansible. It contains settings such as the location of the inventory file and SSH options.
-2. inventory/host.ini: is the inventory file that defines the hosts that Ansible will manage. It lists the IP addresses or domain names of the hosts and groups them into categories.
-3. roles/: is a directory that contains all the roles for the Ansible project. In this project, there's only one role named nginx.
-4. site.yml: is the main playbook that will be executed for the entire Ansible project. It includes the nginx role.
+1. `ansible.cfg` is the configuration file for Ansible. It contains settings such as the location of the inventory file and SSH options.
+2. `inventory/host.ini` is the inventory file that defines the hosts that Ansible will manage. It lists the IP addresses or domain names of the hosts and groups them into categories.
+3. `roles/` is a directory that contains all the roles for the Ansible project. In this project, there's only one role named nginx.
+4. `site.yml` is the main playbook that will be executed for the entire Ansible project. It includes the nginx role.
+5. `group_vars` directory to store environment-specific variable values for your inventory groups. This can be useful for defining variables that are specific to certain environments, such as development, staging, and production.
+
+
 
 
 # Requirements
@@ -35,7 +38,7 @@ cd my-playbook
 4. Run the playbook to install Nginx:
 
 ```bash
-ansible-playbook site.yml
+ansible-playbook site.yml --extra-vars "@group_vars/your-environment/all.yml"
 ```
 
 # Using Key-Based Authentication with Ansible:
