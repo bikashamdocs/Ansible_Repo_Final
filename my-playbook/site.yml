@@ -2,6 +2,8 @@
 - name: Install Nginx
   hosts: localhost
   become: yes
+  vars_files:
+  - group_vars/production/all.yml
 
   roles:
     - nginx
