@@ -33,7 +33,7 @@ git clone https://github.com/bikashamdocs/Ansible_Repo_Final.git
 cd my-playbook
 ```
 
-3. Modify the inventory file host.ini to specify the target host or group of hosts to install Nginx on.
+3. Modify the inventory file prod_host.ini or dev_host.ini to specify the target host or group of hosts to install Nginx on.
 
 4. Run the playbook to install Nginx:
 
