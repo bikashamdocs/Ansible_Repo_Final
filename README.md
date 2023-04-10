@@ -11,12 +11,6 @@ This Ansible playbook installs and configures Nginx on an Ubuntu local & Remote 
 
 
 
-
-# Requirements
-1. Ansible 2.10 or later
-2. Ubuntu operating system (tested on Ubuntu 20.04)
-3. Role Variables- You can modify these Role variables in the vars/main.yml file to customize the Nginx installation.
-
 # Dependencies
 NA
 
@@ -25,12 +19,7 @@ NA
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/bikashamdocs/Ansible_Repo_Final.git
-```
-2. Change directory to the cloned repository:
-
-```bash
-cd my-playbook
+git clone https://github.com/bikashamdocs/ansible-setup.git
 ```
 
 3. Modify the inventory file prod_host.ini or dev_host.ini to specify the target host or group of hosts to install Nginx on.
@@ -38,12 +27,14 @@ cd my-playbook
 4. Run the playbook to install Nginx:
 
 ```bash
-ansible-playbook -i inventory/prod_host.ini site.yml --extra-vars "@group_vars/your-environment/all.yml"
+ansible-playbook -i /path/to/my-playbook/inventory/prod_host.ini /path/to/my-playbook/playbook/nginx.yml --extra-vars "@/path/to/my-playbook/group_vars/your-environment/all.yml"
+"
 ```
 or
 
 ```bash
-ansible-playbook -i inventory/dev_host.ini site.yml --extra-vars "@group_vars/your-environment/all.yml"
+ansible-playbook -i /path/to/my-playbook/inventory/dev_host.ini /path/to/my-playbook/playbook/nginx.yml --extra-vars "@/path/to/my-playbook/group_vars/your-environment/all.yml"
+
 ```
 
 # Using Key-Based Authentication with Ansible:
