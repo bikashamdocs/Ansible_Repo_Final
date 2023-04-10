@@ -1,12 +1,12 @@
-# Ansible Playbook: Install Nginx on Ubuntu Local & Remote Machine
-This Ansible playbook installs and configures Nginx on an Ubuntu local & Remote Machine.
+# Ansible Playbook: Install and configure software on Ubuntu Local & Remote Machine
+This Ansible playbook installs and configures software on an Ubuntu local & Remote Machine.
 
 # Project Structure
 
 1. `ansible.cfg` is the configuration file for Ansible. It contains settings such as the location of the inventory file and SSH options.
 2. `inventory/host.ini` is the inventory file that defines the hosts that Ansible will manage. It lists the IP addresses or domain names of the hosts and groups them into categories.
-3. `roles/` is a directory that contains all the roles for the Ansible project. In this project, there's only one role named nginx.
-4. `site.yml` is the main playbook that will be executed for the entire Ansible project. It includes the nginx role.
+3. `roles/` is a directory that contains all the roles for the Ansible project. In this project, there's two roles named nginx,kubernetes.
+4. `nginx.yml` and `kubernetes.yml` is the main playbooks that will be executed for the entire Ansible project. It includes the nginx,kubernetes role respectively.
 5. `group_vars` directory to store environment-specific variable values for your inventory groups. This can be useful for defining variables that are specific to certain environments, such as development, staging, and production.
 
 
@@ -22,18 +22,16 @@ NA
 git clone https://github.com/bikashamdocs/ansible-setup.git
 ```
 
-3. Modify the inventory file prod_host.ini or dev_host.ini to specify the target host or group of hosts to install Nginx on.
+3. Modify the inventory file prod_host.ini or dev_host.ini to specify the target host or group of hosts to install required software.
 
-4. Run the playbook to install Nginx:
+4. Run the playbook to install Nginx and kubernetes:
 
 ```bash
-ansible-playbook -i /path/to/my-playbook/inventory/prod_host.ini /path/to/my-playbook/playbook/nginx.yml --extra-vars "@/path/to/my-playbook/group_vars/your-environment/all.yml"
-"
+ansible-playbook -i /path/to/my-playbook/inventory/<your-environment>_host.ini /path/to/my-playbook/nginx.yml --extra-vars "/path/to/my-playbook/@group_vars/<your-environment>/all.yml"
 ```
-or
 
 ```bash
-ansible-playbook -i /path/to/my-playbook/inventory/dev_host.ini /path/to/my-playbook/playbook/nginx.yml --extra-vars "@/path/to/my-playbook/group_vars/your-environment/all.yml"
+ansible-playbook -i /path/to/my-playbook/inventory/dev_host.ini /path/to/my-playbook/kubernetes.yml --extra-vars "/path/to/my-playbook/@group_vars/your-environment/all.yml"
 
 ```
 
